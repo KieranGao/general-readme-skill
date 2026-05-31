@@ -250,7 +250,7 @@ graph TD
 
 #### Quick Start Section
 
-```markdown
+````markdown
 ## Quick Start
 
 ### Prerequisites
@@ -275,11 +275,11 @@ cp .env.example .env
 ```bash
 npm run dev
 ```
-```
+````
 
 #### Architecture Diagram
 
-```markdown
+````markdown
 ## Architecture
 
 ```mermaid
@@ -288,11 +288,11 @@ graph LR
     B --> C[Auth<br/>JWT]
     B --> D[Database<br/>PostgreSQL]
 ```
-```
+````
 
 #### Directory Structure
 
-```markdown
+````markdown
 ## Project Structure
 
 ```
@@ -302,7 +302,7 @@ src/
 ├── models/           # Database models
 └── index.ts          # Entry point
 ```
-```
+````
 
 ### 3.4 Diagram Templates
 

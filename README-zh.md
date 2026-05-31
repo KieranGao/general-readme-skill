@@ -250,7 +250,7 @@ graph TD
 
 #### 快速开始
 
-```markdown
+````markdown
 ## 快速开始
 
 ### 前置要求
@@ -275,11 +275,11 @@ cp .env.example .env
 ```bash
 npm run dev
 ```
-```
+````
 
 #### 架构图
 
-```markdown
+````markdown
 ## 架构
 
 ```mermaid
@@ -288,11 +288,11 @@ graph LR
     B --> C[认证<br/>JWT]
     B --> D[数据库<br/>PostgreSQL]
 ```
-```
+````
 
 #### 目录结构
 
-```markdown
+````markdown
 ## 项目结构
 
 ```
@@ -302,7 +302,7 @@ src/
 ├── models/           # 数据库模型
 └── index.ts          # 入口文件
 ```
-```
+````
 
 ### 3.4 图表模板
 

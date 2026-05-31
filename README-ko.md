@@ -250,7 +250,7 @@ graph TD
 
 #### 빠른 시작 섹션
 
-```markdown
+````markdown
 ## 빠른 시작
 
 ### 사전 요구사항
@@ -275,11 +275,11 @@ cp .env.example .env
 ```bash
 npm run dev
 ```
-```
+````
 
 #### 아키텍처 다이어그램
 
-```markdown
+````markdown
 ## 아키텍처
 
 ```mermaid
@@ -288,11 +288,11 @@ graph LR
     B --> C[인증<br/>JWT]
     B --> D[데이터베이스<br/>PostgreSQL]
 ```
-```
+````
 
 #### 디렉토리 구조
 
-```markdown
+````markdown
 ## 프로젝트 구조
 
 ```
@@ -302,7 +302,7 @@ src/
 ├── models/           # 데이터베이스 모델
 └── index.ts          # 진입점
 ```
-```
+````
 
 ### 3.4 다이어그램 템플릿
 

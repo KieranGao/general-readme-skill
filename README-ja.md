@@ -250,7 +250,7 @@ graph TD
 
 #### クイックスタートセクション
 
-```markdown
+````markdown
 ## クイックスタート
 
 ### 前提条件
@@ -275,11 +275,11 @@ cp .env.example .env
 ```bash
 npm run dev
 ```
-```
+````
 
 #### アーキテクチャ図
 
-```markdown
+````markdown
 ## アーキテクチャ
 
 ```mermaid
@@ -288,11 +288,11 @@ graph LR
     B --> C[認証<br/>JWT]
     B --> D[データベース<br/>PostgreSQL]
 ```
-```
+````
 
 #### ディレクトリ構造
 
-```markdown
+````markdown
 ## プロジェクト構造
 
 ```
@@ -302,7 +302,7 @@ src/
 ├── models/           # データベースモデル
 └── index.ts          # エントリーポイント
 ```
-```
+````
 
 ### 3.4 図表テンプレート
 
