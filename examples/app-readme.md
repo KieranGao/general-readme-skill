@@ -7,26 +7,40 @@
   This example demonstrates a comprehensive README for a full-stack web application.
 -->
 
-<div align="right">
+<h1 align="center">Taskboard</h1>
+<p align="center">
+  <strong>A collaborative task management application with real-time updates</strong>
+  <br />
+  <em>TypeScript · React · Node.js · PostgreSQL · Real-time Collaboration</em>
+</p>
 
-[English](README.md) · [中文](README-zh.md) · [日本語](README-ja.md)
+<p align="center">
+  <a href="#quick-start"><img src="https://img.shields.io/badge/Quick_Start-4CAF50?style=for-the-badge" alt="Quick Start" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache_2.0-yellow?style=for-the-badge" alt="License" /></a>
+</p>
 
-</div>
+<p align="center">
+  <a href="https://docs.anthropic.com/en/docs/claude-code"><img src="https://img.shields.io/badge/Claude_Code-D97757?style=flat&logo=claude&logoColor=white" alt="Claude Code" /></a>
+  <a href="https://github.com/features/copilot"><img src="https://img.shields.io/badge/GitHub_Copilot-000000?style=flat&logo=github&logoColor=white" alt="GitHub Copilot" /></a>
+  <a href="https://cursor.sh"><img src="https://img.shields.io/badge/Cursor-000000?style=flat&logo=cursor&logoColor=white" alt="Cursor" /></a>
+</p>
 
-# Taskboard
+<p align="center">
+  <a href="README.md">English</a> · <a href="README-zh.md">中文</a> · <a href="README-ja.md">日本語</a>
+</p>
 
-> A collaborative task management application with real-time updates
+---
 
-![Build](https://img.shields.io/github/actions/workflow/status/user/taskboard/ci.yml)
-![Version](https://img.shields.io/docker/v/user/taskboard)
-![License](https://img.shields.io/badge/license-Apache--2.0-blue)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
-
-![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black)
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=node.js&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white)
-![Redis](https://img.shields.io/badge/Redis-DC382D?style=flat&logo=redis&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)
+<p align="center">
+  <img src="https://img.shields.io/github/actions/workflow/status/user/taskboard/ci.yml" alt="Build" />
+  <img src="https://img.shields.io/docker/v/user/taskboard" alt="Version" />
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black" alt="React" />
+  <img src="https://img.shields.io/badge/Node.js-339933?style=flat&logo=node.js&logoColor=white" alt="Node.js" />
+  <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white" alt="PostgreSQL" />
+  <img src="https://img.shields.io/badge/Redis-DC382D?style=flat&logo=redis&logoColor=white" alt="Redis" />
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white" alt="Docker" />
+</p>
 
 ## Features
 

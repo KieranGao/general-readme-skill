@@ -23,6 +23,18 @@ https://img.shields.io/badge/{LABEL}-{COLOR}?style={STYLE}&logo={LOGO}&logoColor
 
 ---
 
+## AI IDE Platforms
+
+| Technology | Badge |
+|---|---|
+| Claude Code | `![Claude Code](https://img.shields.io/badge/Claude_Code-D97757?style=flat&logo=claude&logoColor=white)` |
+| GitHub Copilot | `![GitHub Copilot](https://img.shields.io/badge/GitHub_Copilot-000000?style=flat&logo=github&logoColor=white)` |
+| Cursor | `![Cursor](https://img.shields.io/badge/Cursor-000000?style=flat&logo=cursor&logoColor=white)` |
+| Gemini CLI | `![Gemini CLI](https://img.shields.io/badge/Gemini_CLI-4285F4?style=flat&logo=google&logoColor=white)` |
+| Codex | `![Codex](https://img.shields.io/badge/Codex-000000?style=flat&logo=openai&logoColor=white)` |
+
+---
+
 ## Programming Languages
 
 | Technology | Badge |

@@ -16,7 +16,32 @@ How to write each README section. These rules apply regardless of tone profile �
 
 ## Hero (Title + Description + Badges)
 
-**Structure:**
+**Structure (HTML Centered Layout — Recommended):**
+```html
+<h1 align="center">Project Name</h1>
+<p align="center">
+  <strong>One-line description of what the project does</strong>
+  <br />
+  <em>Keywords · Features · Platform support</em>
+</p>
+
+<p align="center">
+  <a href="#quick-start"><img src="https://img.shields.io/badge/Quick_Start-4CAF50?style=for-the-badge" alt="Quick Start" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge" alt="License" /></a>
+</p>
+
+<p align="center">
+  <a href="https://docs.anthropic.com/en/docs/claude-code"><img src="https://img.shields.io/badge/Claude_Code-D97757?style=flat&logo=claude&logoColor=white" alt="Claude Code" /></a>
+  <a href="https://github.com/features/copilot"><img src="https://img.shields.io/badge/GitHub_Copilot-000000?style=flat&logo=github&logoColor=white" alt="GitHub Copilot" /></a>
+  <a href="https://cursor.sh"><img src="https://img.shields.io/badge/Cursor-000000?style=flat&logo=cursor&logoColor=white" alt="Cursor" /></a>
+</p>
+
+<p align="center">
+  <a href="README.md">English</a> · <a href="README-zh.md">中文</a> · <a href="README-ja.md">日本語</a>
+</p>
+```
+
+**Structure (Markdown Legacy — For Reference):**
 ```markdown
 <div align="right">
 
@@ -33,13 +58,16 @@ How to write each README section. These rules apply regardless of tone profile �
 ```
 
 **Rules:**
-- Title: project name from `package.json`/`name`, `pyproject.toml`/`name`, directory name, or existing README. H1. No prefix ("# My Project" not "# Project: My Project").
-- Description: one sentence, 10-25 words. States what it *does*, not what it *is*.
+- Title: Use `<h1 align="center">` for HTML layout. Project name from `package.json`/`name`, `pyproject.toml`/`name`, directory name, or existing README. No prefix ("My Project" not "Project: My Project").
+- Description: Use `<p align="center">` with `<strong>` for main description. One sentence, 10-25 words. States what it *does*, not what it *is*.
   - ✓ "Fast, type-safe HTTP server for Node.js"
   - ✗ "A powerful and robust HTTP server framework"
   - ✗ "This project is an HTTP server"
-- Language switcher: right-aligned `<div>` or plain links with `---` separator. See language-guide.md.
-- Badges: follow badge-styles.md grouping rules.
+- Subtitle: Use `<em>` for keywords/features/platform support line.
+- CTA Buttons: Use `for-the-badge` style badges for "Quick Start" and "License" links.
+- Platform Badges: Add AI IDE platform badges (Claude Code, Copilot, Cursor, etc.) in a separate `<p align="center">`.
+- Language switcher: Use `<p align="center">` with anchor tags. See language-guide.md.
+- Tech Stack Badges: Follow badge-styles.md grouping rules for project-specific badges.
 
 ---
 

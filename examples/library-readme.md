@@ -7,22 +7,36 @@
   This example demonstrates how to write a benefit-oriented README for a published library.
 -->
 
-<div align="right">
+<h1 align="center">typed-fetch</h1>
+<p align="center">
+  <strong>Type-safe fetch wrapper with automatic response parsing and error handling</strong>
+  <br />
+  <em>Zero Overhead · Full TypeScript Inference · Tree-Shakeable</em>
+</p>
 
-[English](README.md) · [中文](README-zh.md)
+<p align="center">
+  <a href="#quick-start"><img src="https://img.shields.io/badge/Quick_Start-4CAF50?style=for-the-badge" alt="Quick Start" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge" alt="License" /></a>
+</p>
 
-</div>
+<p align="center">
+  <a href="https://docs.anthropic.com/en/docs/claude-code"><img src="https://img.shields.io/badge/Claude_Code-D97757?style=flat&logo=claude&logoColor=white" alt="Claude Code" /></a>
+  <a href="https://github.com/features/copilot"><img src="https://img.shields.io/badge/GitHub_Copilot-000000?style=flat&logo=github&logoColor=white" alt="GitHub Copilot" /></a>
+  <a href="https://cursor.sh"><img src="https://img.shields.io/badge/Cursor-000000?style=flat&logo=cursor&logoColor=white" alt="Cursor" /></a>
+</p>
 
-# typed-fetch
+<p align="center">
+  <a href="README.md">English</a> · <a href="README-zh.md">中文</a>
+</p>
 
-> Type-safe fetch wrapper with automatic response parsing and error handling
+---
 
-![Build](https://img.shields.io/github/actions/workflow/status/user/typed-fetch/ci.yml)
-![Version](https://img.shields.io/npm/v/typed-fetch)
-![License](https://img.shields.io/badge/license-MIT-green)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
-
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=node.js&logoColor=white)
+<p align="center">
+  <img src="https://img.shields.io/github/actions/workflow/status/user/typed-fetch/ci.yml" alt="Build" />
+  <img src="https://img.shields.io/npm/v/typed-fetch" alt="Version" />
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Node.js-339933?style=flat&logo=node.js&logoColor=white" alt="Node.js" />
+</p>
 
 ## Features
 

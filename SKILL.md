@@ -155,7 +155,7 @@ Fixed-order application and manual content preservation:
 - Fixed section order applies only to auto-generated sections. Preserve any manually written content in-place when it is wrapped with HTML markers `<!-- MANUAL-START -->` and `<!-- MANUAL-END -->`, or when a top-level section is not tagged `<!-- AUTO-GENERATED -->`.
 - If a preserved manual section breaks the fixed order, leave it in place and insert regenerated auto sections around it rather than moving or deleting manual content.
 
-1. **Hero** — Project name(H1), one-line description, badges
+1. **Hero** — Project name(H1), one-line description, badges. **Use HTML centered layout for professional appearance (see Hero Template below).**
 2. **Features / Why** — Max 6 core differentiating features
 3. **Quick Start** — Max 4 copy-paste command steps
 4. **Usage** — Real code examples, max 4 items
@@ -167,6 +167,51 @@ Fixed-order application and manual content preservation:
 10. **Deployment** — Docker/CI guide, only if deployment files exist
 11. **Contributing** — Standard fork → branch → commit → PR workflow
 12. **License** — One-line license statement
+
+### Hero Template (HTML Centered Layout)
+
+The Hero section uses HTML `<p align="center">` tags for a professional, centered appearance. This layout is inspired by modern open-source projects like Understand Anything.
+
+**Structure:**
+```html
+<h1 align="center">{PROJECT_NAME}</h1>
+<p align="center">
+  <strong>{ONE_LINE_DESCRIPTION}</strong>
+  <br />
+  <em>{SUBTITLE_WITH_KEYWORDS}</em>
+</p>
+
+<p align="center">
+  <a href="#quick-start"><img src="https://img.shields.io/badge/{QUICK_START_TEXT}-{COLOR}?style=for-the-badge" alt="Quick Start" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/{LICENSE_TEXT}-{COLOR}?style=for-the-badge" alt="License" /></a>
+</p>
+
+<p align="center">
+  {PLATFORM_BADGES}
+</p>
+
+<p align="center">
+  {LANGUAGE_SWITCHER}
+</p>
+```
+
+**Rules:**
+- Title: Use `<h1 align="center">` instead of Markdown `#`
+- Description: Use `<p align="center">` with `<strong>` for main description
+- Subtitle: Use `<em>` for keywords/features line
+- CTA Buttons: Use `for-the-badge` style for visibility (Quick Start, License)
+- Platform Badges: Add AI IDE platform badges (Claude Code, Copilot, Cursor, etc.)
+- Language Switcher: Use `<p align="center">` with anchor tags
+- Badge Style: Platform badges use the user-selected style from Phase 1
+
+**Platform Badge URLs:**
+```markdown
+![Claude Code](https://img.shields.io/badge/Claude_Code-D97757?style=flat&logo=claude&logoColor=white)
+![GitHub Copilot](https://img.shields.io/badge/GitHub_Copilot-000000?style=flat&logo=github&logoColor=white)
+![Cursor](https://img.shields.io/badge/Cursor-000000?style=flat&logo=cursor&logoColor=white)
+![Gemini CLI](https://img.shields.io/badge/Gemini_CLI-4285F4?style=flat&logo=google&logoColor=white)
+![Codex](https://img.shields.io/badge/Codex-000000?style=flat&logo=openai&logoColor=white)
+```
 
 ### Critical Generation Rules (Must Follow)
 1. **No fabrication**: All features, commands, code examples must come from real project files.

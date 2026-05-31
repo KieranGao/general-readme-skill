@@ -1,17 +1,24 @@
-<div align="right">
+<h1 align="center">General README Skill</h1>
+<p align="center">
+  <strong>使用 AI 编程助手为任意项目生成专业的 README 文件</strong>
+  <br />
+  <em>零依赖 · 多平台 · 多语言 · 支持 Claude Code、Copilot、Cursor 等 AI IDE</em>
+</p>
 
-[English](README.md) · 中文 · [日本語](README-ja.md) · [한국어](README-ko.md) · [Русский](README-ru.md)
+<p align="center">
+  <a href="#快速开始"><img src="https://img.shields.io/badge/快速开始-4CAF50?style=for-the-badge" alt="Quick Start" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/许可证-MIT-yellow?style=for-the-badge" alt="License: MIT" /></a>
+</p>
 
-</div>
+<p align="center">
+  <a href="https://docs.anthropic.com/en/docs/claude-code"><img src="https://img.shields.io/badge/Claude_Code-D97757?style=flat&logo=claude&logoColor=white" alt="Claude Code" /></a>
+  <a href="https://github.com/features/copilot"><img src="https://img.shields.io/badge/GitHub_Copilot-000000?style=flat&logo=github&logoColor=white" alt="GitHub Copilot" /></a>
+  <a href="https://cursor.sh"><img src="https://img.shields.io/badge/Cursor-000000?style=flat&logo=cursor&logoColor=white" alt="Cursor" /></a>
+</p>
 
-# general-readme-skill
-
-> 使用 AI 编程助手为任何项目生成专业的 README 文件
-
-![Markdown](https://img.shields.io/badge/Markdown-000000?style=flat&logo=markdown&logoColor=white)
-![Claude Code](https://img.shields.io/badge/Claude_Code-D97757?style=flat&logo=claude&logoColor=white)
-![MIT License](https://img.shields.io/badge/License-MIT-green?style=flat)
-![Zero Dependencies](https://img.shields.io/badge/Dependencies-0-blue?style=flat)
+<p align="center">
+  <a href="README.md">English</a> · <a href="README-zh.md">中文</a> · <a href="README-ja.md">日本語</a> · <a href="README-ko.md">한국어</a> · <a href="README-ru.md">Русский</a>
+</p>
 
 ## 功能特性
 
