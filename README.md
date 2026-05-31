@@ -33,19 +33,21 @@
 
 ## Workflow Overview
 
-The skill follows a **Configure → Scan → Generate → Output** pipeline:
+The skill follows a **Configure → Scan → Generate → Beautify → Output** pipeline:
 
 ```mermaid
 graph LR
     A[User Trigger] --> B[Phase 1<br/>Configure]
     B --> C[Phase 2<br/>Scan]
     C --> D[Phase 3<br/>Generate]
-    D --> E[Phase 4<br/>Output]
-    style A fill:#E6A23C
-    style B fill:#409EFF
-    style C fill:#67C23A
-    style D fill:#F56C6C
-    style E fill:#909399
+    D --> E[Phase 4<br/>Beautify]
+    E --> F[Phase 5<br/>Output]
+    style A fill:#E6A23C,color:#fff
+    style B fill:#409EFF,color:#fff
+    style C fill:#67C23A,color:#fff
+    style D fill:#F56C6C,color:#fff
+    style E fill:#9B59B6,color:#fff
+    style F fill:#909399,color:#fff
 ```
 
 ## Phase 1: Configuration
@@ -387,9 +389,53 @@ Badges are grouped in this order:
 
 ---
 
-## Phase 4: Output
+## Phase 4: Beautification (Auto-Triggered)
 
-### 4.1 File Generation
+After Phase 3 generates the README, this phase automatically enhances visual presentation by replacing suitable Markdown syntax with HTML.
+
+### 4.1 Execution Flow
+
+**Step 1: Analysis (Automatic)**
+Scan the generated README and identify beautifiable elements.
+
+**Step 2: Confirmation (User Interaction)**
+Display beautification suggestions to user:
+
+```
+AI: README generation complete! Analyzing beautification opportunities...
+
+Found the following beautification suggestions:
+
+1. ✅ [Hero] Title centered → <h1 align="center">
+2. ✅ [Hero] Description centered and bold → <p align="center"><strong>
+3. ✅ [Hero] Add CTA buttons
+4. ✅ [Hero] Platform badges centered
+5. ⚪ [Content] Tables keep Markdown (easier to maintain)
+6. ⚪ [Code] Code blocks keep Markdown (has syntax highlighting)
+
+Accept these suggestions?
+[Accept All] [Confirm Each] [Reject All]
+```
+
+**Step 3: Execution (Automatic)**
+Apply selected beautifications based on user confirmation.
+
+### 4.2 Beautification Rules
+
+| Region | Strategy | Reason |
+|---|---|---|
+| **Hero** | Always beautify (HTML) | Significant visual improvement |
+| **Content** | Keep Markdown | Easier to maintain |
+| **Code/Diagrams** | Keep Markdown | Syntax highlighting / GitHub native support |
+| **Structure** | Keep Markdown | GitHub styling sufficient |
+
+For detailed rules and HTML templates, see `references/beautification-rules.md`.
+
+---
+
+## Phase 5: Output
+
+### 5.1 File Generation
 
 1. Generate primary `README.md` in selected primary language
 2. Generate secondary files: `README-{lang}.md` for each extra language
@@ -397,15 +443,13 @@ Badges are grouped in this order:
 
 **Language Switcher Format:**
 
-```markdown
-<div align="right">
-
-English · [中文](README-zh.md) · [日本語](README-ja.md) · [한국어](README-ko.md) · [Русский](README-ru.md)
-
-</div>
+```html
+<p align="center">
+  <a href="README.md">English</a> · <a href="README-zh.md">中文</a> · <a href="README-ja.md">日本語</a> · <a href="README-ko.md">한국어</a> · <a href="README-ru.md">Русский</a>
+</p>
 ```
 
-### 4.2 Output Format
+### 5.2 Output Format
 
 - UTF-8 encoding
 - Unified line breaks (LF)
@@ -488,7 +532,24 @@ AI: 正在扫描项目结构...
     检测到: TypeScript, Express, PostgreSQL
     正在生成 README.md...
     
-    ✅ README.md 生成完成！请检查并根据需要调整。
+    ✅ README.md 生成完成！正在分析美化机会...
+
+    发现以下可美化项目：
+
+    1. ✅ [Hero] 标题居中 → <h1 align="center">
+    2. ✅ [Hero] 描述居中加粗 → <p align="center"><strong>
+    3. ✅ [Hero] 添加 CTA 按钮
+    4. ✅ [Hero] 平台徽章居中
+    5. ⚪ [内容] 表格保持 Markdown（更易维护）
+    6. ⚪ [代码] 代码块保持 Markdown（有语法高亮）
+
+    是否接受这些建议？
+    [全部接受] [逐条确认] [全部拒绝]
+
+User: 全部接受
+
+AI: 正在执行美化...
+    ✅ README.md 已生成并美化完成！请检查并根据需要调整。
 ```
 
 ## Project Structure
@@ -509,6 +570,7 @@ general-readme-skill/
 └── references/                 # Reference files
     ├── badges.md               # Technology badge mapping (150+ entries)
     ├── badge-styles.md         # Badge layout rules
+    ├── beautification-rules.md # Phase 4 beautification rules & HTML templates
     ├── diagram-templates.md    # Mermaid + SVG templates
     ├── language-guide.md       # Multi-language rules
     ├── section-guidelines.md   # Section writing rules

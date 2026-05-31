@@ -33,19 +33,21 @@
 
 ## 워크플로우 개요
 
-스킬은 **구성 → 스캔 → 생성 → 출력** 파이프라인을 따릅니다:
+스킬은 **구성 → 스캔 → 생성 → 미화 → 출력** 파이프라인을 따릅니다:
 
 ```mermaid
 graph LR
     A[사용자<br/>트리거] --> B[단계 1<br/>구성]
     B --> C[단계 2<br/>스캔]
     C --> D[단계 3<br/>생성]
-    D --> E[단계 4<br/>출력]
-    style A fill:#E6A23C
-    style B fill:#409EFF
-    style C fill:#67C23A
-    style D fill:#F56C6C
-    style E fill:#909399
+    D --> E[단계 4<br/>미화]
+    E --> F[단계 5<br/>출력]
+    style A fill:#E6A23C,color:#fff
+    style B fill:#409EFF,color:#fff
+    style C fill:#67C23A,color:#fff
+    style D fill:#F56C6C,color:#fff
+    style E fill:#9B59B6,color:#fff
+    style F fill:#909399,color:#fff
 ```
 
 ## 단계 1: 구성
@@ -387,9 +389,53 @@ graph LR
 
 ---
 
-## 단계 4: 출력
+## 단계 4: 미화 (자동 트리거)
 
-### 4.1 파일 생성
+단계 3에서 README를 생성한 후, 이 단계가 자동으로 트리거되어 적절한 Markdown 구문을 HTML로 교체하여 시각적 표현을 향상시킵니다.
+
+### 4.1 실행 흐름
+
+**단계 1: 분석 (자동)**
+생성된 README를 스캔하고 미화 가능한 요소를 식별합니다.
+
+**단계 2: 확인 (사용자 상호작용)**
+사용자에게 미화 제안을 표시:
+
+```
+AI: README 생성 완료! 미화 기회를 분석 중...
+
+다음 미화 제안이 발견되었습니다:
+
+1. ✅ [히어로] 제목 중앙 정렬 → <h1 align="center">
+2. ✅ [히어로] 설명 중앙 정렬 굵게 → <p align="center"><strong>
+3. ✅ [히어로] CTA 버튼 추가
+4. ✅ [히어로] 플랫폼 배지 중앙 정렬
+5. ⚪ [콘텐츠] 테이블은 Markdown 유지 (유지 관리 용이)
+6. ⚪ [코드] 코드 블록은 Markdown 유지 (구문 강조 있음)
+
+이 제안을 수락하시겠습니까?
+[모두 수락] [개별 확인] [모두 거부]
+```
+
+**단계 3: 실행 (자동)**
+사용자 확인에 따라 미화를 적용합니다.
+
+### 4.2 미화 규칙
+
+| 영역 | 전략 | 이유 |
+|---|---|---|
+| **히어로** | 항상 미화 (HTML) | 시각적 향상이 뚜렷 |
+| **콘텐츠** | Markdown 유지 | 유지 관리 용이 |
+| **코드/다이어그램** | Markdown 유지 | 구문 강조 / GitHub 네이티브 지원 |
+| **구조** | Markdown 유지 | GitHub 스타일링으로 충분 |
+
+상세 규칙과 HTML 템플릿은 `references/beautification-rules.md`를 참조하세요.
+
+---
+
+## 단계 5: 출력
+
+### 5.1 파일 생성
 
 1. 선택된 주요 언어로 `README.md` 생성
 2. 각 보조 언어의 `README-{lang}.md` 생성
@@ -397,15 +443,13 @@ graph LR
 
 **언어 스위처 형식:**
 
-```markdown
-<div align="right">
-
-English · [中文](README-zh.md) · [日本語](README-ja.md) · [한국어](README-ko.md) · [Русский](README-ru.md)
-
-</div>
+```html
+<p align="center">
+  <a href="README.md">English</a> · <a href="README-zh.md">中文</a> · <a href="README-ja.md">日本語</a> · <a href="README-ko.md">한국어</a> · <a href="README-ru.md">Русский</a>
+</p>
 ```
 
-### 4.2 출력 형식
+### 5.2 출력 형식
 
 - UTF-8 인코딩
 - 통일된 줄 바꿈（LF）
@@ -488,7 +532,24 @@ AI: 프로젝트 구조를 스캔 중...
     감지됨: TypeScript, Express, PostgreSQL
     README.md 생성 중...
     
-    ✅ README.md가 생성되었습니다! 확인하고 필요에 따라 조정하세요.
+    ✅ README.md 생성 완료! 미화 기회를 분석 중...
+
+    다음 미화 제안이 발견되었습니다:
+
+    1. ✅ [히어로] 제목 중앙 정렬 → <h1 align="center">
+    2. ✅ [히어로] 설명 중앙 정렬 굵게 → <p align="center"><strong>
+    3. ✅ [히어로] CTA 버튼 추가
+    4. ✅ [히어로] 플랫폼 배지 중앙 정렬
+    5. ⚪ [콘텐츠] 테이블은 Markdown 유지 (유지 관리 용이)
+    6. ⚪ [코드] 코드 블록은 Markdown 유지 (구문 강조 있음)
+
+    이 제안을 수락하시겠습니까?
+    [모두 수락] [개별 확인] [모두 거부]
+
+사용자: 모두 수락
+
+AI: 미화 적용 중...
+    ✅ README.md가 생성되고 미화되었습니다! 확인하고 필요에 따라 조정하세요.
 ```
 
 ## 프로젝트 구조
@@ -509,6 +570,7 @@ general-readme-skill/
 └── references/                 # 참조 파일
     ├── badges.md               # 기술 배지 매핑（150+ 항목）
     ├── badge-styles.md         # 배지 레이아웃 규칙
+    ├── beautification-rules.md # 단계 4 미화 규칙 및 HTML 템플릿
     ├── diagram-templates.md    # Mermaid + SVG 템플릿
     ├── language-guide.md       # 다국어 규칙
     ├── section-guidelines.md   # 섹션 작성 규칙

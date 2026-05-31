@@ -33,19 +33,21 @@
 
 ## ワークフロー概要
 
-スキルは **設定 → スキャン → 生成 → 出力** のパイプラインに従います：
+スキルは **設定 → スキャン → 生成 → 美化 → 出力** のパイプラインに従います：
 
 ```mermaid
 graph LR
     A[ユーザー<br/>トリガー] --> B[フェーズ 1<br/>設定]
     B --> C[フェーズ 2<br/>スキャン]
     C --> D[フェーズ 3<br/>生成]
-    D --> E[フェーズ 4<br/>出力]
-    style A fill:#E6A23C
-    style B fill:#409EFF
-    style C fill:#67C23A
-    style D fill:#F56C6C
-    style E fill:#909399
+    D --> E[フェーズ 4<br/>美化]
+    E --> F[フェーズ 5<br/>出力]
+    style A fill:#E6A23C,color:#fff
+    style B fill:#409EFF,color:#fff
+    style C fill:#67C23A,color:#fff
+    style D fill:#F56C6C,color:#fff
+    style E fill:#9B59B6,color:#fff
+    style F fill:#909399,color:#fff
 ```
 
 ## フェーズ 1：設定
@@ -387,9 +389,53 @@ graph LR
 
 ---
 
-## フェーズ 4：出力
+## フェーズ 4：美化（自動トリガー）
 
-### 4.1 ファイル生成
+フェーズ 3 で README を生成した後、このフェーズが自動的にトリガーされ、適切な Markdown 構文を HTML に置き換えて視覚的な表現を向上させます。
+
+### 4.1 実行フロー
+
+**ステップ 1：分析（自動）**
+生成された README をスキャンし、美化可能な要素を識別します。
+
+**ステップ 2：確認（ユーザーインタラクション）**
+ユーザーに美化提案を表示：
+
+```
+AI: README 生成完了！美化の機会を分析中...
+
+以下の美化提案が見つかりました：
+
+1. ✅ [ヒーロー] タイトルを中央揃え → <h1 align="center">
+2. ✅ [ヒーロー] 説明を中央揃え太字 → <p align="center"><strong>
+3. ✅ [ヒーロー] CTAボタンを追加
+4. ✅ [ヒーロー] プラットフォームバッジを中央揃え
+5. ⚪ [コンテンツ] テーブルは Markdown のまま維持（保守しやすいため）
+6. ⚪ [コード] コードブロックは Markdown のまま維持（シンタックスハイライトあり）
+
+これらの提案を受け入れますか？
+[すべて受け入れ] [個別に確認] [すべて拒否]
+```
+
+**ステップ 3：実行（自動）**
+ユーザーの確認に基づいて美化を適用します。
+
+### 4.2 美化ルール
+
+| 領域 | 戦略 | 理由 |
+|---|---|---|
+| **ヒーロー** | 常に美化（HTML） | 視覚的な向上が顕著 |
+| **コンテンツ** | Markdown を維持 | 保守しやすい |
+| **コード/図表** | Markdown を維持 | シンタックスハイライト / GitHub ネイティブサポート |
+| **構造** | Markdown を維持 | GitHub のスタイリングで十分 |
+
+詳細なルールと HTML テンプレートは `references/beautification-rules.md` を参照してください。
+
+---
+
+## フェーズ 5：出力
+
+### 5.1 ファイル生成
 
 1. 選択された主要言語で `README.md` を生成
 2. 各副次言語の `README-{lang}.md` を生成
@@ -397,15 +443,13 @@ graph LR
 
 **言語スイッチャー形式：**
 
-```markdown
-<div align="right">
-
-English · [中文](README-zh.md) · [日本語](README-ja.md) · [한국어](README-ko.md) · [Русский](README-ru.md)
-
-</div>
+```html
+<p align="center">
+  <a href="README.md">English</a> · <a href="README-zh.md">中文</a> · <a href="README-ja.md">日本語</a> · <a href="README-ko.md">한국어</a> · <a href="README-ru.md">Русский</a>
+</p>
 ```
 
-### 4.2 出力形式
+### 5.2 出力形式
 
 - UTF-8エンコーディング
 - 統一された改行コード（LF）
@@ -488,7 +532,24 @@ AI: プロジェクト構造をスキャン中...
     検出: TypeScript, Express, PostgreSQL
     README.mdを生成中...
     
-    ✅ README.mdが生成されました！確認して必要に応じて調整してください。
+    ✅ README.md 生成完了！美化の機会を分析中...
+
+    以下の美化提案が見つかりました：
+
+    1. ✅ [ヒーロー] タイトルを中央揃え → <h1 align="center">
+    2. ✅ [ヒーロー] 説明を中央揃え太字 → <p align="center"><strong>
+    3. ✅ [ヒーロー] CTAボタンを追加
+    4. ✅ [ヒーロー] プラットフォームバッジを中央揃え
+    5. ⚪ [コンテンツ] テーブルは Markdown のまま維持（保守しやすいため）
+    6. ⚪ [コード] コードブロックは Markdown のまま維持（シンタックスハイライトあり）
+
+    これらの提案を受け入れますか？
+    [すべて受け入れ] [個別に確認] [すべて拒否]
+
+ユーザー: すべて受け入れ
+
+AI: 美化を適用中...
+    ✅ README.md が生成され美化されました！確認して必要に応じて調整してください。
 ```
 
 ## プロジェクト構造
@@ -509,6 +570,7 @@ general-readme-skill/
 └── references/                 # リファレンスファイル
     ├── badges.md               # 技術バッジマッピング（150+エントリ）
     ├── badge-styles.md         # バッジレイアウトルール
+    ├── beautification-rules.md # フェーズ4美化ルールとHTMLテンプレート
     ├── diagram-templates.md    # Mermaid + SVGテンプレート
     ├── language-guide.md       # 多言語ルール
     ├── section-guidelines.md   # セクション執筆ルール

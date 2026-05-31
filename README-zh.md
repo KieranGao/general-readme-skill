@@ -33,19 +33,21 @@
 
 ## 工作流程概览
 
-技能遵循 **配置 → 扫描 → 生成 → 输出** 的流水线：
+技能遵循 **配置 → 扫描 → 生成 → 美化 → 输出** 的流水线：
 
 ```mermaid
 graph LR
     A[用户触发] --> B[阶段 1<br/>配置]
     B --> C[阶段 2<br/>扫描]
     C --> D[阶段 3<br/>生成]
-    D --> E[阶段 4<br/>输出]
-    style A fill:#E6A23C
-    style B fill:#409EFF
-    style C fill:#67C23A
-    style D fill:#F56C6C
-    style E fill:#909399
+    D --> E[阶段 4<br/>美化]
+    E --> F[阶段 5<br/>输出]
+    style A fill:#E6A23C,color:#fff
+    style B fill:#409EFF,color:#fff
+    style C fill:#67C23A,color:#fff
+    style D fill:#F56C6C,color:#fff
+    style E fill:#9B59B6,color:#fff
+    style F fill:#909399,color:#fff
 ```
 
 ## 阶段 1：配置
@@ -387,9 +389,53 @@ graph LR
 
 ---
 
-## 阶段 4：输出
+## 阶段 4：美化优化（自动触发）
 
-### 4.1 文件生成
+阶段 3 生成 README 后，此阶段自动触发，通过将适合的 Markdown 语法替换为 HTML 来增强视觉效果。
+
+### 4.1 执行流程
+
+**步骤 1：分析（自动）**
+扫描生成的 README，识别可美化的元素。
+
+**步骤 2：确认（用户交互）**
+向用户展示美化建议：
+
+```
+AI: README 生成完成！正在分析美化机会...
+
+发现以下可美化项目：
+
+1. ✅ [Hero] 标题居中 → <h1 align="center">
+2. ✅ [Hero] 描述居中加粗 → <p align="center"><strong>
+3. ✅ [Hero] 添加 CTA 按钮
+4. ✅ [Hero] 平台徽章居中
+5. ⚪ [内容] 表格保持 Markdown（更易维护）
+6. ⚪ [代码] 代码块保持 Markdown（有语法高亮）
+
+是否接受这些建议？
+[全部接受] [逐条确认] [全部拒绝]
+```
+
+**步骤 3：执行（自动）**
+根据用户确认执行美化。
+
+### 4.2 美化规则
+
+| 区域 | 策略 | 原因 |
+|---|---|---|
+| **Hero** | 必须美化（HTML） | 视觉效果显著提升 |
+| **内容** | 保持 Markdown | 更易维护 |
+| **代码/图表** | 保持 Markdown | 语法高亮 / GitHub 原生支持 |
+| **结构** | 保持 Markdown | GitHub 样式已足够 |
+
+详细规则和 HTML 模板请参见 `references/beautification-rules.md`。
+
+---
+
+## 阶段 5：输出
+
+### 5.1 文件生成
 
 1. 生成主要语言的 `README.md`
 2. 生成次要语言文件：`README-{lang}.md`
@@ -397,15 +443,13 @@ graph LR
 
 **语言切换器格式：**
 
-```markdown
-<div align="right">
-
-English · [中文](README-zh.md) · [日本語](README-ja.md) · [한국어](README-ko.md) · [Русский](README-ru.md)
-
-</div>
+```html
+<p align="center">
+  <a href="README.md">English</a> · <a href="README-zh.md">中文</a> · <a href="README-ja.md">日本語</a> · <a href="README-ko.md">한국어</a> · <a href="README-ru.md">Русский</a>
+</p>
 ```
 
-### 4.2 输出格式
+### 5.2 输出格式
 
 - UTF-8 编码
 - 统一换行符（LF）
@@ -488,7 +532,24 @@ AI: 正在扫描项目结构...
     检测到: TypeScript, Express, PostgreSQL
     正在生成 README.md...
     
-    ✅ README.md 生成完成！请检查并根据需要调整。
+    ✅ README.md 生成完成！正在分析美化机会...
+
+    发现以下可美化项目：
+
+    1. ✅ [Hero] 标题居中 → <h1 align="center">
+    2. ✅ [Hero] 描述居中加粗 → <p align="center"><strong>
+    3. ✅ [Hero] 添加 CTA 按钮
+    4. ✅ [Hero] 平台徽章居中
+    5. ⚪ [内容] 表格保持 Markdown（更易维护）
+    6. ⚪ [代码] 代码块保持 Markdown（有语法高亮）
+
+    是否接受这些建议？
+    [全部接受] [逐条确认] [全部拒绝]
+
+用户: 全部接受
+
+AI: 正在执行美化...
+    ✅ README.md 已生成并美化完成！请检查并根据需要调整。
 ```
 
 ## 项目结构
@@ -509,6 +570,7 @@ general-readme-skill/
 └── references/                 # 参考文件
     ├── badges.md               # 技术徽章映射（150+ 条目）
     ├── badge-styles.md         # 徽章布局规则
+    ├── beautification-rules.md # 阶段 4 美化规则和 HTML 模板
     ├── diagram-templates.md    # Mermaid + SVG 模板
     ├── language-guide.md       # 多语言规则
     ├── section-guidelines.md   # 章节写作规则
