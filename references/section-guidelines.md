@@ -388,3 +388,40 @@ This project uses GitHub Actions for CI/CD. See \`.github/workflows/\` for confi
 - Name + link to LICENSE file. One line.
 - Read the LICENSE file to determine the license type.
 - No "This project is licensed under the MIT License — see the LICENSE file for details" boilerplate.
+
+---
+
+## Beautification Summary
+
+This section summarizes which elements can be beautified with HTML during Phase 4.
+
+### Always Beautify (HTML)
+
+| Section | Element | Markdown → HTML |
+|---|---|---|
+| Hero | Title | `# Title` → `<h1 align="center">` |
+| Hero | Description | `> desc` → `<p align="center"><strong>` |
+| Hero | Subtitle | keywords → `<p align="center"><em>` |
+| Hero | CTA Buttons | `[text](url)` → `<img src="badge?style=for-the-badge">` |
+| Hero | Badges | `![alt](url)` → `<p align="center"><img>` |
+| Hero | Language Switcher | `[EN](url) · [中文](url)` → `<p align="center"><a>` |
+
+### Keep as Markdown
+
+| Section | Element | Reason |
+|---|---|---|
+| Features | Lists | Easier to maintain |
+| Quick Start | Code blocks | Has syntax highlighting |
+| Usage | Code blocks | Has syntax highlighting |
+| Architecture | Mermaid diagrams | GitHub native support |
+| Configuration | Tables | Easier to maintain |
+| API | Tables | Easier to maintain |
+| Directory Structure | Code blocks | Has syntax highlighting |
+| Tech Stack | Tables | Easier to maintain |
+| Deployment | Code blocks | Has syntax highlighting |
+| Contributing | Lists | Easier to maintain |
+| License | Link | GitHub styling sufficient |
+
+### Detailed Rules
+
+For complete beautification rules, HTML templates, and transformation examples, see `references/beautification-rules.md`.

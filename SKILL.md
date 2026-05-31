@@ -13,7 +13,7 @@ Generate professional, human-feeling README files for any project.
 Strictly follow real project content, reject filler text and placeholder content.
 
 ## Overview
-Full workflow: **Configure → Scan → Generate → Output**
+Full workflow: **Configure → Scan → Generate → Beautify → Output**
 **Zero external dependencies.** All rules, templates and assets are embedded in the skill.
 No third-party CLI, runtime or network service required for core functions.
 
@@ -232,7 +232,84 @@ If constraints conflict, follow the numeric precedence above.
 
 ---
 
-## Phase 4: Output
+## Phase 4: Beautification (Auto-Triggered)
+
+After Phase 3 generates the README, this phase automatically triggers to enhance visual presentation by replacing suitable Markdown syntax with HTML.
+
+### 4.1 Trigger Conditions
+
+- Automatically triggers after Phase 3 completes
+- Skips if user explicitly disables beautification (`--no-beautify` flag)
+- Skips if README already contains HTML markers (`<!-- BEAUTIFIED -->`)
+
+### 4.2 Execution Flow
+
+**Step 1: Analysis (Automatic)**
+Scan the generated README.md and identify beautifiable elements:
+- Hero region: title, description, badges, language switcher
+- Content region: tables, lists, collapsible panels
+- Code region: code blocks, Mermaid diagrams
+- Structure region: dividers, anchor links
+
+**Step 2: Confirmation (User Interaction)**
+Display beautification suggestions to user:
+
+```
+AI: README generation complete! Analyzing beautification opportunities...
+
+Found the following beautification suggestions:
+
+1. ✅ [Hero] Title centered → <h1 align="center">
+2. ✅ [Hero] Description centered and bold → <p align="center"><strong>
+3. ✅ [Hero] Add CTA buttons
+4. ✅ [Hero] Platform badges centered
+5. ⚪ [Content] Tables keep Markdown (easier to maintain)
+6. ⚪ [Code] Code blocks keep Markdown (has syntax highlighting)
+
+Accept these suggestions?
+[Accept All] [Confirm Each] [Reject All]
+```
+
+**Step 3: Execution (Automatic)**
+Apply selected beautifications based on user confirmation.
+
+### 4.3 Beautification Rules
+
+**Hero Region (Mandatory):**
+- Title: `# Title` → `<h1 align="center">Title</h1>`
+- Description: `> Description` → `<p align="center"><strong>Description</strong></p>`
+- Subtitle: keywords → `<p align="center"><em>keywords</em></p>`
+- CTA Buttons: `[Quick Start](#)` → `<a href="#"><img src="badge?style=for-the-badge"></a>`
+- Platform Badges: `![Badge](url)` → `<p align="center"><img src="url"></p>`
+- Language Switcher: `[EN](README.md)` → `<p align="center"><a href="README.md">EN</a></p>`
+
+**Content Region (Optional):**
+- Tables: Keep Markdown (easier to maintain)
+- Lists: Keep Markdown (easier to maintain)
+- Collapsible panels: Keep HTML (already formatted)
+
+**Code Region (Keep As-Is):**
+- Code blocks: Keep Markdown (has syntax highlighting)
+- Mermaid diagrams: Keep Markdown (GitHub native support)
+
+**Structure Region (Optional):**
+- Dividers: Keep `---`
+- Anchor links: Keep Markdown
+
+### 4.4 Reference Files
+
+- `references/beautification-rules.md` — Detailed beautification rules and HTML templates
+- `references/section-guidelines.md` — Section-specific beautification notes
+
+### 4.5 Exception Handling
+
+- If beautification fails for an element, keep original Markdown
+- If user rejects all suggestions, skip beautification entirely
+- Add `<!-- BEAUTIFIED -->` marker after successful beautification
+
+---
+
+## Phase 5: Output
 1. Generate primary `README.md` in selected primary language.
 2. Generate secondary files: `README-{lang}.md` for each extra language.
 3. Add language switcher on top of every README file (follow `language-guide.md`).
@@ -257,3 +334,4 @@ All supporting files are independent and can be updated separately without modif
 | diagram-templates.md | Reusable Mermaid diagrams + SVG fallback templates |
 | section-guidelines.md | Global writing rules, banned phrases, per-section constraints |
 | language-guide.md | Multi-language file name rules & language switcher format |
+| beautification-rules.md | Phase 4 beautification rules, HTML templates, transformation examples |
