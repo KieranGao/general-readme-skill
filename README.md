@@ -1,17 +1,24 @@
-<div align="right">
+<h1 align="center">General README Skill</h1>
+<p align="center">
+  <strong>Generate professional README files for any project using AI coding assistants</strong>
+  <br />
+  <em>Zero Dependencies · Multi-Platform · Multi-Language · Supports Claude Code, Copilot, Cursor, and more</em>
+</p>
 
-English · [中文](README-zh.md) · [日本語](README-ja.md) · [한국어](README-ko.md) · [Русский](README-ru.md)
+<p align="center">
+  <a href="#quick-start"><img src="https://img.shields.io/badge/Quick_Start-4CAF50?style=for-the-badge" alt="Quick Start" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge" alt="License: MIT" /></a>
+</p>
 
-</div>
+<p align="center">
+  <a href="https://docs.anthropic.com/en/docs/claude-code"><img src="https://img.shields.io/badge/Claude_Code-D97757?style=flat&logo=claude&logoColor=white" alt="Claude Code" /></a>
+  <a href="https://github.com/features/copilot"><img src="https://img.shields.io/badge/GitHub_Copilot-000000?style=flat&logo=github&logoColor=white" alt="GitHub Copilot" /></a>
+  <a href="https://cursor.sh"><img src="https://img.shields.io/badge/Cursor-000000?style=flat&logo=cursor&logoColor=white" alt="Cursor" /></a>
+</p>
 
-# general-readme-skill
-
-> Generate professional README files for any project using AI coding assistants
-
-![Markdown](https://img.shields.io/badge/Markdown-000000?style=flat&logo=markdown&logoColor=white)
-![Claude Code](https://img.shields.io/badge/Claude_Code-D97757?style=flat&logo=claude&logoColor=white)
-![MIT License](https://img.shields.io/badge/License-MIT-green?style=flat)
-![Zero Dependencies](https://img.shields.io/badge/Dependencies-0-blue?style=flat)
+<p align="center">
+  <a href="README.md">English</a> · <a href="README-zh.md">中文</a> · <a href="README-ja.md">日本語</a> · <a href="README-ko.md">한국어</a> · <a href="README-ru.md">Русский</a>
+</p>
 
 ## Features
 
