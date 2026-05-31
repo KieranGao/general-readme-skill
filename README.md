@@ -20,6 +20,10 @@
   <a href="README.md">English</a> · <a href="README-zh.md">中文</a> · <a href="README-ja.md">日本語</a> · <a href="README-ko.md">한국어</a> · <a href="README-ru.md">Русский</a>
 </p>
 
+<p align="center">
+  <img src="assets/intro.png" alt="General README Skill — Generate professional README files for any project" width="800" />
+</p>
+
 ## Features
 
 | Feature | Description |

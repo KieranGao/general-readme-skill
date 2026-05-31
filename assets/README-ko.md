@@ -20,6 +20,10 @@
   <a href="README.md">English</a> · <a href="README-zh.md">中文</a> · <a href="README-ja.md">日本語</a> · <a href="README-ko.md">한국어</a> · <a href="README-ru.md">Русский</a>
 </p>
 
+<p align="center">
+  <img src="intro.png" alt="General README Skill — AI 코딩 어시스턴트를 사용하여 모든 프로젝트의 전문적인 README 파일 생성" width="800" />
+</p>
+
 ## 기능
 
 | 기능 | 설명 |
